@@ -97,9 +97,11 @@ module.exports = async options =>
           reload: false,
         },
       ),
-      new WebpackNotifierPlugin({
-        title: 'Jhipster Quotes',
-        contentImage: path.join(__dirname, 'logo-jhipster.png'),
-      }),
+      process.env.JHI_DISABLE_WEBPACK_NOTIFIER
+        ? null
+        : new WebpackNotifierPlugin({
+            title: 'Jhipster Quotes',
+            contentImage: path.join(__dirname, 'logo-jhipster.png'),
+          }),
     ].filter(Boolean),
   });
