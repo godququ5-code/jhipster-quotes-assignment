@@ -1,0 +1,116 @@
+application {
+  config {
+    baseName jhipsterQuotes
+    applicationType monolith
+    authenticationType jwt
+    packageName com.example.jhipsterquotes
+    buildTool maven
+    clientFramework react
+    databaseType sql
+    devDatabaseType postgresql
+    prodDatabaseType postgresql
+    cacheProvider ehcache
+    enableHibernateCache true
+    enableTranslation true
+    nativeLanguage en
+    languages [en, ru, zh-cn]
+    serverPort 8080
+    testFrameworks [cypress]
+  }
+  entities *
+}
+
+entity Region {
+  regionName String
+}
+
+entity Country {
+  countryName String
+}
+
+entity Location {
+  streetAddress String
+  postalCode String
+  city String
+  stateProvince String
+}
+
+entity Department {
+  departmentName String required
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Task {
+  title String
+  description String
+}
+
+/**
+ * The Employee entity.
+ */
+entity Employee {
+  firstName String
+  lastName String
+  email String
+  phoneNumber String
+  hireDate Instant
+  salary Long
+  commissionPct Long
+}
+
+entity Job {
+  jobTitle String
+  minSalary Long
+  maxSalary Long
+}
+
+entity JobHistory {
+  startDate Instant
+  endDate Instant
+  language Language
+}
+
+enum Language {
+  FRENCH,
+  ENGLISH,
+  SPANISH
+}
+
+relationship OneToOne {
+  Country{region} to Region
+}
+
+relationship OneToOne {
+  Location{country} to Country
+}
+
+relationship OneToOne {
+  Department{location} to Location
+}
+
+relationship ManyToMany {
+  Job{task(title)} to Task{job}
+}
+
+relationship OneToMany {
+  Employee to Job{employee}
+  Department to Employee{department}
+}
+
+relationship ManyToOne {
+  Employee{manager} to Employee
+}
+
+relationship OneToOne {
+  JobHistory{job} to Job
+  JobHistory{department} to Department
+  JobHistory{employee} to Employee
+}
+
+paginate JobHistory, Employee with infinite-scroll
+paginate Job with pagination
+
+service all with serviceImpl except Employee, Job

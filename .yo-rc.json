@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "jhipsterQuotes",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "react",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": true,
+    "enableTranslation": true,
+    "entities": ["Region", "Country", "Location", "Department", "Task", "Employee", "Job", "JobHistory"],
+    "jhipsterVersion": "9.0.0",
+    "jwtSecretKey": "M2FhNzgzNzgyM2JkYTAwNGY5MTYyYTFhNzAwNzI2MjY0MzRjNWJmM2Y5ZTZhNmMwNzgwYTkwMGNkZjhjMDJkNTg3OTUwYjIyYjNhMmM1YzYzNDYxZTNlOWRlNWQyZGEzM2FlYWZmNTZlN2FkZDQ3YTE0OTI0OTNkN2ZkMWMyYWE=",
+    "languages": ["en", "ru", "zh-cn"],
+    "lastLiquibaseTimestamp": 1778453662000,
+    "nativeLanguage": "en",
+    "packageName": "com.example.jhipsterquotes",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8080",
+    "testFrameworks": ["cypress"]
+  }
+}
